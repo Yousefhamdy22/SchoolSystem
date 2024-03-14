@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admission Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Student Admission Form</h1>
+    <form id="studentAdmissionForm">
+        <!-- Student Information -->
+        <fieldset>
+            <legend>Student Information</legend>
+            <label for="fullNameArabic">Full Name (Arabic):</label>
+            <input type="text" id="fullNameArabic" name="fullNameArabic" required>
+            <label for="fullNameEnglish">Full Name (English):</label>
+            <input type="text" id="fullNameEnglish" name="fullNameEnglish" required>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <!-- Add other input fields for student information here -->
+        </fieldset>
+
+        <!-- Father Information -->
+        <fieldset>
+            <legend>Father Information</legend>
+            <label for="fatherFullNameArabic">Full Name (Arabic):</label>
+            <input type="text" id="fatherFullNameArabic" name="fatherFullNameArabic" required>
+            <label for="fatherFullNameEnglish">Full Name (English):</label>
+            <input type="text" id="fatherFullNameEnglish" name="fatherFullNameEnglish" required>
+            <!-- Add input fields for father information here -->
+        </fieldset>
+
+        <!-- Mother Information -->
+        <fieldset>
+            <legend>Mother Information</legend>
+            <label for="motherFullNameArabic">Full Name (Arabic):</label>
+            <input type="text" id="motherFullNameArabic" name="motherFullNameArabic" required>
+            <label for="motherFullNameEnglish">Full Name (English):</label>
+            <input type="text" id="motherFullNameEnglish" name="motherFullNameEnglish" required>
+            <!-- Add input fields for mother information here -->
+        </fieldset>
+
+        <!-- Additional Information -->
+        <fieldset>
+            <legend>Additional Information</legend>
+            <!-- Add input fields for additional information here -->
+        </fieldset>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
