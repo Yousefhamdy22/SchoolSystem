@@ -1,5 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SchoolSystem.DTOs;
@@ -95,13 +94,27 @@ namespace SchoolSystem.Controllers
                     throw new Exception("Person Null");
                 }
 
+                // check for job
+                var check = await _JobRepository.GetByIdAsync(admissionDto.JobDataid);
+
+                if(check == null)
+                {
+                    return BadRequest(new ResponseModel<StudentAdmission>
+                    {
+                        Status = 404,
+                        Success = false,
+                        Message = "Invalid Job Data Id.",
+                        Data = null
+                    });
+                }
+
                 // Map StudentAdmissionDto to StudentAdmission
                 var mapped = _mapper.Map<PersonalInformation>(admissionDto);
 
                 var response = await _repository.InsertAsync(mapped);
                 await _repository.SaveChangesAsync();
 
-                if (admissionDto.CV != null && admissionDto.CV.Length > 0)
+                if (admissionDto.CV != null && admissionDto.CV.Length > 0 && mapped.Id != 0)
                 {
                     var extension = Path.GetExtension(admissionDto.CV.FileName).ToLowerInvariant(); // 
                     var filePath = Path.Combine("wwwroot", "uploads", "jobs", $"{mapped.Id}{extension}");
